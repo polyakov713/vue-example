@@ -9,8 +9,6 @@ Vue.config.productionTip = false;
 
 Vue.use(AppComponents);
 
-import './assets/styles/base.sass';
-
 new Vue({
     router,
     store,

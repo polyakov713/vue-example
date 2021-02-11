@@ -1,12 +1,12 @@
 <template>
-  <button>
-    button
-  </button>
+    <button>
+        button
+    </button>
 </template>
 
 <script>
 export default {
-  name: 'AppButton',
+    name: 'AppButton',
 };
 </script>
 
