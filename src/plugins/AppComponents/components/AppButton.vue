@@ -1,7 +1,6 @@
 <template lang="pug">
-    button(
+    button.app-button(
         :disabled="$attrs.disabled"
-        class="app-button"
         :class="computedClasses"
         @click="$emit('click', $event)"
     )
