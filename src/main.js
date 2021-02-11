@@ -3,7 +3,13 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 
+import AppComponents from './plugins/AppComponents';
+
 Vue.config.productionTip = false;
+
+Vue.use(AppComponents);
+
+import './assets/styles/base.sass';
 
 new Vue({
     router,
