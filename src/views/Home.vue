@@ -1,6 +1,6 @@
 <template lang="pug">
-    .home home
-        app-button
+    .home
+        app-button home
 </template>
 
 <script>

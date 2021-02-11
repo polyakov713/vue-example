@@ -5,6 +5,8 @@ import store from './store';
 
 import AppComponents from './plugins/AppComponents';
 
+import './assets/styles/base.sass';
+
 Vue.config.productionTip = false;
 
 Vue.use(AppComponents);
