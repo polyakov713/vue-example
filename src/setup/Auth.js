@@ -22,6 +22,7 @@ export default class Auth {
     static async logOut() {
         try {
             localStorage.removeItem('token_pair');
+            event_bus.$emit('unauthorized');
         } catch (err) {
             console.error('Auth.logOut ERROR:', err);
             throw err;
@@ -39,6 +40,7 @@ export default class Auth {
 
             const token_pair_string = localStorage.getItem('token_pair');
             if (!token_pair_string) {
+                event_bus.$emit('unauthorized');
                 event_bus.$emit('tokens-checked', null);
                 return null;
             }
@@ -64,16 +66,21 @@ export default class Auth {
                             encoded: access,
                             decoded: jwtDecode(access),
                         };
-                    } else {
-                        localStorage.removeItem('token_pair');
                     }
                 }
             }
 
+            if (!result) {
+                localStorage.removeItem('token_pair');
+                event_bus.$emit('unauthorized');
+            }
             event_bus.$emit('tokens-checked', result);
             return result;
         } catch (err) {
             console.error('Auth.checkTokens ERROR:', err);
+            localStorage.removeItem('token_pair');
+            event_bus.$emit('unauthorized');
+            event_bus.$emit('tokens-checked', null);
             return null;
         } finally {
             this.checking_in_progress = false;
@@ -97,7 +104,6 @@ export default class Auth {
         } catch (err) {
             console.error('Auth.refreshTokenPair ERROR:', err);
             localStorage.removeItem('token_pair');
-            event_bus.$emit('unauthorized');
         }
     }
 }

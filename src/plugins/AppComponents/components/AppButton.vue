@@ -1,5 +1,6 @@
 <template lang="pug">
     button.app-button(
+        :type="$attrs.type || 'button'"
         :disabled="$attrs.disabled"
         :class="computed_classes"
         @click="$emit('click', $event)"
@@ -77,7 +78,7 @@ export default {
         
         &_big
             width: 100%;
-            padding: 12px 12px;
+            padding: 17px 12px;
             border-radius: 4px;
             font-size: 14px;
             line-height: 16px;

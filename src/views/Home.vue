@@ -1,5 +1,5 @@
 <template lang="pug">
-    .home
+    article.home
         app-input(
             v-model="input"
         )

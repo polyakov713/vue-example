@@ -25,7 +25,7 @@ export default {
 .app-input
     display: block;
     width: 100%;
-    height: 40px;
+    height: 50px;
     padding: 0 16px;
     border: 1px solid $gray-icon;
     border-radius: 4px;
