@@ -1,7 +1,7 @@
 <template lang="pug">
     button.app-button(
         :disabled="$attrs.disabled"
-        :class="computedClasses"
+        :class="computed_classes"
         @click="$emit('click', $event)"
     )
         slot
@@ -27,7 +27,7 @@ export default {
         },
     },
     computed: {
-        computedClasses() {
+        computed_classes() {
             const result = [];
 
             result.push(`app-button_color_${this.color}`);
