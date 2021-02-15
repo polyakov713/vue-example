@@ -23,7 +23,7 @@ export default {
         return {
             table_headers: [
                 {
-                    prop: 'id',
+                    prop: 'order_id',
                     label: 'ID',
                     width: 70,
                 },
@@ -32,7 +32,7 @@ export default {
                     label: 'Товары',
                 },
                 {
-                    prop: 'date',
+                    prop: 'create_date',
                     label: 'Дата заказа',
                 },
                 {
@@ -40,15 +40,15 @@ export default {
                     label: 'Статус',
                 },
                 {
-                    prop: 'payed',
+                    prop: 'is_paid',
                     label: 'Оплачено',
                 },
                 {
-                    prop: 'shipped',
+                    prop: 'is_shipped',
                     label: 'Отправлено',
                 },
                 {
-                    prop: 'delivered',
+                    prop: 'is_delivered',
                     label: 'Доставлено',
                 },
                 {
@@ -64,29 +64,26 @@ export default {
                     label: 'Метод отправки',
                 },
                 {
-                    prop: 'price',
+                    prop: 'total_price',
                     label: 'Стоимость',
                 },
             ],
-            table_data: [
-                {
-                    id: 123,
-                    goods: 'blabla',
-                },
-            ],
+            table_data: [],
+            table_total: 0,
             data_is_loading: false,
         };
     },
     created() {
-        // this.updateTable();
+        this.updateTable();
     },
     methods: {
         async updateTable(params) {
             try {
                 this.data_is_loading = true;
 
-                const { data } = await axios.get('https://zonesmart.su/api/v1/zonesmart/order/', { params });
-                console.log(data);
+                const { data } = await axios.get('https://zonesmart.su/api/v1/zonesmart/order/', { params: { ...params, limit: 50 } });
+                this.table_data = data.results;
+                this.table_total = data.count;
             } catch (err) {
                 console.error('updateTable ERROR:', err);
                 this.$notify({

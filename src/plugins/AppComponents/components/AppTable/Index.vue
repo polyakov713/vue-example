@@ -104,10 +104,14 @@ export default {
     
     &__tr
         background-color: #fff;
+        &:last-child
+            .app-table__td
+                border-bottom: none;
     
     &__td
         padding: 0px 5px;
         height: 56px;
+        border-bottom: 1px solid rgba($gray-icon, .4);
 
     &__no-data
         text-align: center;

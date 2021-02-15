@@ -6,6 +6,8 @@ import store from './store';
 
 import AppComponents from './plugins/AppComponents';
 
+import './setup/axios';
+
 import './assets/styles/base.sass';
 
 Vue.config.productionTip = false;
